@@ -1,0 +1,93 @@
+---
+import { Image } from "astro:assets";
+import imagePost1 from "../images/image-retro-pcs.jpg";
+import imagePost2 from "../images/image-top-laptops.jpg";
+import imagePost3 from "../images/image-gaming-growth.jpg";
+---
+
+<section class="posts">
+    <div class="post">
+        <Image src={imagePost1} alt="" />
+        <div class="content">
+            <span class="num">01</span>
+            <a href="#"><h3>Reviving Retro PCs</h3></a>
+            <p>What happens when old PCs are given modern upgrades?</p>
+        </div>
+    </div>
+    <div class="post">
+        <Image src={imagePost2} alt="" />
+        <div class="content">
+            <span class="num">02</span>
+            <a href="#"><h3>Top 10 Laptops of 2022</h3></a>
+            <p>Our best picks for various needs and budgets.</p>
+        </div>
+    </div>
+    <div class="post">
+        <Image src={imagePost3} alt="" />
+        <div class="content">
+            <span class="num">03</span>
+            <a href="#"><h3>The Growth of Gaming</h3></a>
+            <p>How the pandemic has sparked fresh opportunities.</p>
+        </div>
+    </div>
+</section>
+
+<style>
+    .posts {
+        display: grid;
+        gap: 3rem;
+    }
+
+    .post {
+        display: grid;
+        grid-template-columns: 30% 60%;
+        gap: 1.25rem;
+
+        cursor: pointer;
+    }
+
+    .post > img {
+        object-fit: cover;
+    }
+
+    .content {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+
+    h3 {
+        font-size: clamp(2vw, 2.5rem, 4vw);
+        font-weight: 900;
+        transition: color 300ms ease-in-out;
+    }
+    .post:hover h3 {
+        color: var(--pri-red);
+    }
+
+    .post:hover img {
+        scale: 1.02;
+        transition: scale 300ms ease-in-out;
+    }
+
+    p {
+        font-size: 0.85rem;
+    }
+
+    .num {
+        font-size: 2rem;
+        font-weight: 700;
+        color: var(--sec-greyblue);
+        line-height: 1.3;
+    }
+
+    @media only screen and (min-width: 60em) {
+        .posts {
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1rem;
+        }
+        h3 {
+            font-size: 1.1rem;
+        }
+    }
+</style>

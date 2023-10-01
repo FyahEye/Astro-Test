@@ -1,0 +1,130 @@
+---
+import { Image } from "astro:assets";
+import logo from "../images/logo.svg";
+import navOpen from "../images/icon-menu.svg";
+import navClose from "../images/icon-menu-close.svg";
+---
+
+<nav>
+    <div class="header">
+        <a href="#"><Image class="w-logo" src={logo} alt="W Logo" /></a>
+        <div class="menu-open">
+            <Image src={navOpen} alt="" />
+        </div>
+    </div>
+    <div class="mobile-menu close">
+        <div class="menu-close">
+            <Image src={navClose} alt="" />
+        </div>
+        <ul class="nav">
+            <li><a href="#">Home</a></li>
+            <li><a href="#">New</a></li>
+            <li><a href="#">Popular</a></li>
+            <li><a href="#">Trending</a></li>
+            <li><a href="#">Categories</a></li>
+        </ul>
+    </div>
+</nav>
+
+<style>
+    nav {
+        position: relative;
+        margin-bottom: 2rem;
+        padding-top: 1.75rem;
+    }
+
+    .header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        /* padding-inline: 1rem; */
+    }
+
+    .w-logo {
+        width: 2.5rem;
+        height: auto;
+    }
+
+    .menu-open {
+        width: 2.5rem;
+        height: auto;
+        cursor: pointer;
+    }
+
+    .menu-open > img {
+        width: 2.5rem;
+        height: auto;
+        /* object-fit: cover; */
+    }
+
+    .menu-close {
+        width: 1.75rem;
+        height: auto;
+        position: absolute;
+        top: 1.75rem;
+        right: 1rem;
+        cursor: pointer;
+    }
+
+    .menu-close > img {
+        width: 1.75rem;
+        height: auto;
+        /* object-fit: cover; */
+    }
+
+    .mobile-menu {
+        width: 70vw;
+        height: 100vh;
+        position: absolute;
+        top: 0;
+        right: 0;
+        z-index: 10000;
+        background: var(--neutral-white);
+    }
+
+    .mobile-menu::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        z-index: 1000;
+        transform: translateX(-100%);
+        width: 100vw;
+        height: 100vh;
+        background-color: var(--sec-dark-blue);
+        opacity: 0.35;
+    }
+
+    .close {
+        display: none;
+    }
+
+    .nav {
+        padding-top: 20vh;
+        padding-left: 1.5rem;
+
+        display: flex;
+        flex-direction: column;
+        gap: 1.25rem;
+    }
+
+    li {
+        font-size: 1rem;
+        list-style: none;
+    }
+</style>
+
+<script>
+    // Toogle Menu
+    const menuOpen = document.querySelector(".menu-open");
+    const menuClose = document.querySelector(".menu-close");
+    const menu = document.querySelector(".mobile-menu");
+    const body = document.querySelector("body");
+    menuOpen?.addEventListener("click", () => {
+        menu?.classList.remove("close");
+        body?.classList.add("sticky");
+    });
+    menuClose?.addEventListener("click", () => {
+        menu?.classList.add("close");
+        body?.classList.remove("sticky");
+    });
+</script>

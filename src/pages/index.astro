@@ -1,0 +1,53 @@
+---
+import Layout from "../layouts/Layout.astro";
+import NavMobile from "../components/nav-mobile.astro";
+import Nav from "../components/nav.astro";
+import Hero from "../components/hero.astro";
+import Posts from "../components/posts.astro";
+---
+
+<Layout>
+	<nav class="mobile"><NavMobile /></nav>
+	<nav class="default"><Nav /></nav>
+	<main>
+		<Hero />
+		<Posts />
+	</main>
+</Layout>
+
+<style>
+	main,
+	nav {
+		max-width: 75em;
+		padding-inline: 1rem;
+		margin: 0 auto;
+	}
+
+	main {
+		padding-bottom: 3rem;
+	}
+
+	@media only screen and (min-width: 45em) {
+		main,
+		nav {
+			padding-inline: 3rem;
+		}
+
+		main {
+			padding-top: 1.5rem;
+		}
+
+		nav {
+			padding-top: 3rem;
+		}
+
+		.mobile {
+			display: none;
+		}
+	}
+	@media only screen and (width < 45em) {
+		.default {
+			display: none;
+		}
+	}
+</style>

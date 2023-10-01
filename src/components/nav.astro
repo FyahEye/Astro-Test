@@ -1,0 +1,52 @@
+---
+import { Image } from "astro:assets";
+import logo from "../images/logo.svg";
+---
+
+<nav>
+    <div class="header">
+        <a href="#"><Image class="w-logo" src={logo} alt="W Logo" /></a>
+        <ul class="nav">
+            <li><a href="#">Home</a></li>
+            <li><a href="#">New</a></li>
+            <li><a href="#">Popular</a></li>
+            <li><a href="#">Trending</a></li>
+            <li><a href="#">Categories</a></li>
+        </ul>
+    </div>
+</nav>
+
+<style>
+    nav {
+        position: relative;
+        margin-bottom: 2rem;
+        padding-top: 1.75rem;
+    }
+
+    .header {
+        display: flex;
+        align-items: baseline;
+        justify-content: space-between;
+        /* padding-inline: 1rem; */
+    }
+
+    .w-logo {
+        width: 3.5rem;
+        height: auto;
+    }
+    .nav {
+        display: flex;
+        flex-direction: row;
+        gap: 1.75rem;
+    }
+
+    li {
+        font-size: 1rem;
+        list-style: none;
+        color: var(--sec-dark-greyblue);
+        transition: color 300ms ease-in-out;
+    }
+    li:hover {
+        color: var(--pri-red);
+    }
+</style>
